@@ -1,0 +1,38 @@
+[
+  {
+    "$": {
+      "id": "E01"
+    },
+    "nom": "El Ouafy",
+    "prenom": "Fouad",
+    "email": "fouad@gmail.com",
+    "poste": "Développeur Full Stack",
+    "departement": "Informatique",
+    "salaire": "5000",
+    "statut": "actif"
+  },
+  {
+    "$": {
+      "id": "E02"
+    },
+    "nom": "Ennagui",
+    "prenom": "Youssef",
+    "email": "youssef@gmail.com",
+    "poste": "Designer",
+    "departement": "Marketing",
+    "salaire": "4000",
+    "statut": "actif"
+  },
+  {
+    "$": {
+      "id": "E03"
+    },
+    "nom": "Alami",
+    "prenom": "Sara",
+    "email": "sara@gmail.com",
+    "poste": "Comptable",
+    "departement": "Finance",
+    "salaire": "4500",
+    "statut": "actif"
+  }
+]

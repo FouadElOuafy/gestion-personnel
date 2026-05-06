@@ -1,0 +1,22 @@
+# Backend node_modules
+backend/node_modules/
+backend/.env
+backend/*.log
+
+# Frontend node_modules
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+
+# XML - node_modules (très important !)
+xml/node_modules/
+
+# Garder les fichiers XML utiles
+# xml/employes.json  ← décommente si tu veux l'ignorer aussi
+# xml/employes.xml   ← décommente si tu veux l'ignorer aussi
+
+# Editeurs
+.vscode/
+.idea/
+.DS_Store

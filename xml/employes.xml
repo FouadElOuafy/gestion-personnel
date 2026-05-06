@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etudiants xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="employes.xsd">
+
+  <employe id="E01">
+    <nom>El Ouafy</nom>
+    <prenom>Fouad</prenom>
+    <email>fouad@gmail.com</email>
+    <poste>Développeur Full Stack</poste>
+    <departement>Informatique</departement>
+    <salaire>5000</salaire>
+    <statut>actif</statut>
+  </employe>
+
+  <employe id="E02">
+    <nom>Ennagui</nom>
+    <prenom>Youssef</prenom>
+    <email>youssef@gmail.com</email>
+    <poste>Designer</poste>
+    <departement>Marketing</departement>
+    <salaire>4000</salaire>
+    <statut>actif</statut>
+  </employe>
+
+  <employe id="E03">
+    <nom>Alami</nom>
+    <prenom>Sara</prenom>
+    <email>sara@gmail.com</email>
+    <poste>Comptable</poste>
+    <departement>Finance</departement>
+    <salaire>4500</salaire>
+    <statut>actif</statut>
+  </employe>
+
+</etudiants>
