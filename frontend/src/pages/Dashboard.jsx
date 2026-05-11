@@ -25,8 +25,8 @@ function Dashboard() {
 
     if (role === 'employe') {
       const [userRes, empRes] = await Promise.all([
-        axios.get('http://localhost:3000/api/users/me',   { headers: h }),
-        axios.get('http://localhost:3000/api/employes',   { headers: h }),
+        axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/users/me',   { headers: h }),
+        axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/employes',   { headers: h }),
       ])
       const ficheEmp = empRes.data[0] || null
       setStats({ type: 'employe', user: userRes.data, employe: ficheEmp })
@@ -34,9 +34,9 @@ function Dashboard() {
     } else if (role === 'manager') {
       // Manager → seulement son équipe
      const [empRes, congeRes, userRes] = await Promise.all([
-        axios.get('http://localhost:3000/api/employes',  { headers: h }),
-        axios.get('http://localhost:3000/api/conges',    { headers: h }),
-        axios.get('http://localhost:3000/api/users/me',  { headers: h }),
+        axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/employes',  { headers: h }),
+        axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/conges',    { headers: h }),
+        axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/users/me',  { headers: h }),
       ])
       const employes = empRes.data
 
@@ -46,7 +46,7 @@ function Dashboard() {
       if (deptId) {
         try {
           const deptRes = await axios.get(
-            `http://localhost:3000/api/departements`,
+            `https://fouad1239-gestion-personnel-backend.hf.space/api/departements`,
             { headers: h }
           )
           const dept = deptRes.data.find(d => d._id === deptId || d._id === deptId?._id)
@@ -68,9 +68,9 @@ function Dashboard() {
     } else {
       // Admin → tout voir
       const [empRes, deptRes, congeRes] = await Promise.all([
-        axios.get('http://localhost:3000/api/employes',     { headers: h }),
-        axios.get('http://localhost:3000/api/departements', { headers: h }),
-        axios.get('http://localhost:3000/api/conges',       { headers: h }),
+        axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/employes',     { headers: h }),
+        axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/departements', { headers: h }),
+        axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/conges',       { headers: h }),
       ])
       const employes = empRes.data
       setStats({

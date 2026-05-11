@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Layout from '../../components/Layout'
 
-const API = 'http://localhost:3000/api/employes'
+const API = 'https://fouad1239-gestion-personnel-backend.hf.space/api/employes'
 
 const headers = () => ({
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -49,7 +49,7 @@ export default function GestionEmployes() {
   const chargerDepts = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:3000/api/departements',
+        'https://fouad1239-gestion-personnel-backend.hf.space/api/departements',
         headers()
       )
       setDepartements(res.data)
@@ -381,7 +381,7 @@ const closeBtnStyle = {
 // import axios from 'axios'
 // import Layout from '../../components/Layout'
 
-// const API = 'http://localhost:3000/api/employes'
+// const API = 'https://fouad1239-gestion-personnel-backend.hf.space/api/employes'
 
 // const headers = () => ({
 //   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }

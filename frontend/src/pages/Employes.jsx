@@ -24,7 +24,7 @@ function Employes() {
   const chargerEmployes = async () => {
     try {
       setLoading(true)
-      const res = await axios.get('http://localhost:3000/api/employes', headers())
+      const res = await axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/employes', headers())
       setEmployes(res.data)
     } catch (e) {
       if (e.response?.status === 401) { localStorage.clear(); navigate('/login') }
@@ -174,7 +174,7 @@ export default Employes
 //   const chargerEmployes = async () => {
 //     try {
 //       const token = localStorage.getItem('token')
-//       const res = await axios.get('http://localhost:3000/api/employes', {
+//       const res = await axios.get('https://fouad1239-gestion-personnel-backend.hf.space/api/employes', {
 //         headers: { Authorization: `Bearer ${token}` }
 //       })
 //       setEmployes(res.data)

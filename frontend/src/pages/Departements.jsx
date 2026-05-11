@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Layout from '../components/Layout'
 
-const API = 'http://localhost:3000/api/departements'
+const API = 'https://fouad1239-gestion-personnel-backend.hf.space/api/departements'
 const headers = () => ({
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 })

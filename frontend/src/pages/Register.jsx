@@ -16,7 +16,7 @@ function Register() {
     e.preventDefault()
     setErreur('')
     try {
-      await axios.post('http://localhost:3000/api/auth/register', form)
+      await axios.post('https://fouad1239-gestion-personnel-backend.hf.space/api/auth/register', form)
       setSucces('Compte créé ! Redirection...')
       setTimeout(() => navigate('/login'), 1500)
     } catch (e) {
@@ -120,7 +120,7 @@ export default Register
 //     e.preventDefault()
 //     setErreur('')
 //     try {
-//       await axios.post('http://localhost:3000/api/auth/register', form)
+//       await axios.post('https://fouad1239-gestion-personnel-backend.hf.space/api/auth/register', form)
 //       setSucces('Compte créé ! Redirection...')
 //       setTimeout(() => navigate('/login'), 1500)
 //     } catch (e) {
