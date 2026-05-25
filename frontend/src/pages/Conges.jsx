@@ -86,7 +86,7 @@ export default function Conges() {
     <Layout>
 
       {/* EN-TÊTE */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
         <div>
           <h4 className="fw-bold mb-0">🏖️ Congés</h4>
           <p className="text-muted mb-0" style={{ fontSize: 13 }}>
@@ -94,7 +94,7 @@ export default function Conges() {
           </p>
         </div>
         {(role === 'employe' || role === 'manager') && (
-          <button className="btn btn-primary" onClick={ouvrirModal}>
+          <button className="btn btn-primary w-100 w-sm-auto" onClick={ouvrirModal}>
             + Nouvelle demande
           </button>
         )}
@@ -104,21 +104,21 @@ export default function Conges() {
       {succes && <div className="alert alert-success py-2">{succes}</div>}
       {erreur && !showModal && <div className="alert alert-danger py-2">{erreur}</div>}
 
-      {/* STATS RAPIDES RESPONSIVE */}
-      <div className="row g-3 mb-4">
+      {/* STATS RAPIDES RESPONSIVE (CORRIGÉ POUR MOBILE) */}
+      <div className="row g-2 g-md-3 mb-4">
         {[
           { label: 'Total',      val: conges.length,                                         color: '#378ADD', icon: '📋' },
           { label: 'En attente', val: conges.filter(c => c.statut === 'en_attente').length, color: '#EF9F27', icon: '⏳' },
           { label: 'Approuvés',  val: conges.filter(c => c.statut === 'approuve').length,   color: '#1D9E75', icon: '✅' },
           { label: 'Refusés',    val: conges.filter(c => c.statut === 'refuse').length,     color: '#E24B4A', icon: '❌' },
         ].map((s, i) => (
-          <div key={i} className="col-12 col-sm-6 col-md-3">
-            <div className="card border-0 shadow-sm" style={{ borderRadius: 12 }}>
-              <div className="card-body p-3 d-flex align-items-center gap-3">
-                <span style={{ fontSize: 28, flexShrink: 0 }}>{s.icon}</span>
-                <div>
-                  <p className="text-muted mb-0" style={{ fontSize: 12 }}>{s.label}</p>
-                  <h5 className="fw-bold mb-0" style={{ color: s.color }}>{s.val}</h5>
+          <div key={i} className="col-6 col-md-3">
+            <div className="card border-0 shadow-sm h-100" style={{ borderRadius: 12 }}>
+              <div className="card-body p-2 p-sm-3 d-flex align-items-center gap-2 gap-sm-3">
+                <span style={{ fontSize: 24, flexShrink: 0 }}>{s.icon}</span>
+                <div style={{ minWidth: 0 }}>
+                  <p className="text-muted mb-0 text-truncate" style={{ fontSize: 11 }}>{s.label}</p>
+                  <h5 className="fw-bold mb-0" style={{ color: s.color, fontSize: '1.1rem' }}>{s.val}</h5>
                 </div>
               </div>
             </div>
@@ -126,8 +126,8 @@ export default function Conges() {
         ))}
       </div>
 
-      {/* FILTRES */}
-      <div className="d-flex flex-wrap gap-2 mb-3">
+      {/* FILTRES RESPONSIVE (CORRIGÉ AVEC SCROLL SUR MOBILE) */}
+      <div className="d-flex gap-2 mb-3 pb-2" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', whiteSpace: 'nowrap' }}>
         {[
           { val: 'tous',       label: 'Tous' },
           { val: 'en_attente', label: '⏳ En attente' },
@@ -136,7 +136,7 @@ export default function Conges() {
         ].map(f => (
           <button key={f.val}
             onClick={() => setFiltre(f.val)}
-            className={`btn btn-sm ${filtre === f.val ? 'btn-primary' : 'btn-outline-secondary'}`}>
+            className={`btn btn-sm flex-shrink-0 ${filtre === f.val ? 'btn-primary' : 'btn-outline-secondary'}`}>
             {f.label}
           </button>
         ))}
@@ -322,11 +322,12 @@ const overlayStyle = {
   position: 'fixed', inset: 0,
   background: 'rgba(0,0,0,0.4)',
   display: 'flex', alignItems: 'center',
-  justifyContent: 'center', zIndex: 9999
+  justifyContent: 'center', zIndex: 9999,
+  padding: '10px'
 }
 const modalStyle = {
   background: '#fff', borderRadius: 16,
-  padding: '2rem', width: '100%',
+  padding: '1.5rem', width: '100%',
   maxWidth: 520, maxHeight: '90vh',
   overflowY: 'auto',
   boxShadow: '0 20px 60px rgba(0,0,0,0.2)'
