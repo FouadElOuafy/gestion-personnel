@@ -89,21 +89,21 @@ export default function ValidationConges() {
       {succes && <div className="alert alert-success py-2">{succes}</div>}
       {erreur && <div className="alert alert-danger py-2">{erreur}</div>}
 
-      {/* STATS RESPONSIVE */}
-      <div className="row g-3 mb-4">
+      {/* STATS RESPONSIVE FLUIDES */}
+      <div className="row row-cols-2 row-cols-md-4 g-2 g-md-3 mb-4">
         {[
           { label: 'En attente', val: conges.filter(c => c.statut === 'en_attente').length, color: '#EF9F27', icon: '⏳' },
           { label: 'Approuvés',  val: conges.filter(c => c.statut === 'approuve').length,   color: '#1D9E75', icon: '✅' },
           { label: 'Refusés',    val: conges.filter(c => c.statut === 'refuse').length,     color: '#E24B4A', icon: '❌' },
           { label: 'Total',      val: conges.length,                                         color: '#378ADD', icon: '📋' },
         ].map((s, i) => (
-          <div key={i} className="col-12 col-sm-6 col-md-3">
-            <div className="card border-0 shadow-sm" style={{ borderRadius: 12 }}>
-              <div className="card-body p-3 d-flex align-items-center gap-3">
-                <span style={{ fontSize: 28, flexShrink: 0 }}>{s.icon}</span>
-                <div>
-                  <p className="text-muted mb-0" style={{ fontSize: 12 }}>{s.label}</p>
-                  <h5 className="fw-bold mb-0" style={{ color: s.color }}>{s.val}</h5>
+          <div key={i} className="col">
+            <div className="card border-0 shadow-sm h-100" style={{ borderRadius: 12 }}>
+              <div className="card-body p-2 p-md-3 d-flex align-items-center gap-2 gap-md-3">
+                <span style={{ fontSize: window.innerWidth < 576 ? 22 : 28, flexShrink: 0 }}>{s.icon}</span>
+                <div className="min-w-0">
+                  <p className="text-muted mb-0 text-truncate" style={{ fontSize: 11 }}>{s.label}</p>
+                  <h6 className="fw-bold mb-0" style={{ color: s.color, fontSize: 16 }}>{s.val}</h6>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function ValidationConges() {
       </div>
 
       {/* TABLEAU */}
-      <div className="card border-0 shadow-sm" style={{ borderRadius: 14 }}>
+      <div className="card border-0 shadow-sm" style={{ borderRadius: 14, overflow: 'hidden' }}>
         {loading ? (
           <div className="text-center py-5">
             <div className="spinner-border text-primary" />
@@ -182,7 +182,7 @@ export default function ValidationConges() {
                         </td>
                         <td style={tdStyle}>{c.motif}</td>
                         <td style={tdStyle}>
-                          <span style={{ fontSize: 13 }}>
+                          <span style={{ fontSize: 13, whiteSpace: 'nowrap' }}>
                             Du {new Date(c.dateDebut).toLocaleDateString('fr-FR')}
                             <br />
                             Au {new Date(c.dateFin).toLocaleDateString('fr-FR')}
@@ -197,7 +197,7 @@ export default function ValidationConges() {
                           <span style={{
                             background: st.bg, color: st.color,
                             padding: '4px 12px', borderRadius: 99,
-                            fontSize: 12, fontWeight: 600
+                            fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap'
                           }}>
                             {st.label}
                           </span>
@@ -242,7 +242,7 @@ export default function ValidationConges() {
             </p>
 
             <div className="mb-3">
-              <label className="form-label style={{ fontSize: 13 }}">Commentaire (optionnel)</label>
+              <label className="form-label" style={{ fontSize: 13 }}>Commentaire (optionnel)</label>
               <textarea className="form-control" rows={3}
                 value={commentaire} onChange={e => setCommentaire(e.target.value)}
                 placeholder="Ex: Bonnes vacances ! ou Solde insuffisant..." />
@@ -279,11 +279,12 @@ const overlayStyle = {
   position: 'fixed', inset: 0,
   background: 'rgba(0,0,0,0.4)',
   display: 'flex', alignItems: 'center',
-  justifyContent: 'center', zIndex: 9999
+  justifyContent: 'center', zIndex: 9999,
+  padding: '1rem'
 }
 const modalStyle = {
   background: '#fff', borderRadius: 16,
-  padding: '2rem', width: '100%',
+  padding: '1.5rem', width: '100%',
   maxWidth: 450, boxShadow: '0 20px 60px rgba(0,0,0,0.2)'
 }
 // import { useState, useEffect } from 'react'
