@@ -86,7 +86,7 @@ function Dashboard() {
   } catch (e) {
     if (e.response?.status === 401) { localStorage.clear(); navigate('/login') }
   } finally {
-    setLoading(false)
+    loading && setLoading(false)
   }
 }
 
@@ -97,17 +97,18 @@ function Dashboard() {
     const user = stats.user
     return (
       <Layout>
-        <div className="mb-4">
+        <div className="mb-4 text-center text-md-start">
           <h4 className="fw-bold">Bonjour, {nom} 👋</h4>
           <p className="text-muted mb-0" style={{ fontSize: 13 }}>
             Espace Employé
           </p>
         </div>
 
+        {/* CORRECTION : g-3 passe à des colonnes fluides sur mobile */}
         <div className="row g-3">
 
           {/* Carte profil */}
-          <div className="col-4">
+          <div className="col-12 col-md-4">
             <div className="card border-0 shadow-sm h-100"
               style={{ borderRadius: 14 }}>
               <div className="card-body p-4 text-center">
@@ -149,7 +150,7 @@ function Dashboard() {
           </div>
 
           {/* Actions rapides */}
-          <div className="col-4">
+          <div className="col-12 col-md-4">
             <div className="card border-0 shadow-sm h-100"
               style={{ borderRadius: 14 }}>
               <div className="card-body p-4">
@@ -182,7 +183,7 @@ function Dashboard() {
           </div>
 
           {/* Infos compte */}
-          <div className="col-4">
+          <div className="col-12 col-md-4">
             <div className="card border-0 shadow-sm h-100"
               style={{ borderRadius: 14 }}>
               <div className="card-body p-4">
@@ -266,14 +267,6 @@ function Dashboard() {
       icon: '❌', color: '#7F77DD'
     },
   ] : []
-  // const cards = stats ? [
-  //   { label: 'Employés',          value: stats.totalEmployes,          icon: '👷', color: '#378ADD' },
-  //   { label: 'Départements',      value: stats.totalDepartements,       icon: '🏢', color: '#1D9E75' },
-  //   { label: 'Masse salariale',   value: stats.totalSalaires + ' MAD', icon: '💰', color: '#EF9F27' },
-  //   { label: 'Congés en attente', value: stats.congesEnAttente,         icon: '⏳', color: '#E24B4A' },
-  //   { label: 'Congés approuvés',  value: stats.congesApprouves,         icon: '✅', color: '#1D9E75' },
-  //   { label: 'Congés refusés',    value: stats.congesRefuses,           icon: '❌', color: '#7F77DD' },
-  // ] : []
 
   return (
     <Layout>
@@ -292,10 +285,10 @@ function Dashboard() {
 
       {!loading && stats && (
         <>
-          {/* 6 STAT CARDS */}
+          {/* CORRECTION : Les 6 cartes s'organisent mieux en grille selon la taille de l'écran */}
           <div className="row g-2 mb-3">
             {cards.map((card, i) => (
-              <div key={i} className="col-4">
+              <div key={i} className="col-12 col-sm-6 col-md-4">
                 <div className="card border-0 shadow-sm"
                   style={{ borderRadius: 12 }}>
                   <div className="card-body p-3 d-flex align-items-center gap-2">
@@ -321,11 +314,11 @@ function Dashboard() {
             ))}
           </div>
 
-          {/* 3 COLONNES */}
+          {/* CORRECTION : Les 3 blocs du bas passent l'un sous l'autre sur mobile */}
           <div className="row g-2">
 
             {/* Activité récente */}
-            <div className="col-4">
+            <div className="col-12 col-md-4 mb-2 mb-md-0">
               <div className="card border-0 shadow-sm h-100"
                 style={{ borderRadius: 12 }}>
                 <div className="card-body p-3">
@@ -362,7 +355,7 @@ function Dashboard() {
             </div>
 
             {/* Statut congés */}
-            <div className="col-4">
+            <div className="col-12 col-md-4 mb-2 mb-md-0">
               <div className="card border-0 shadow-sm h-100"
                 style={{ borderRadius: 12 }}>
                 <div className="card-body p-3">
@@ -396,7 +389,7 @@ function Dashboard() {
             </div>
 
             {/* Infos système */}
-            <div className="col-4">
+            <div className="col-12 col-md-4">
               <div className="card border-0 shadow-sm h-100"
                 style={{ borderRadius: 12 }}>
                 <div className="card-body p-3">
