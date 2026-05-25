@@ -229,12 +229,15 @@ export default function Login() {
         }
 
         /* RESPONSIVE MOBILE */
-        @media (max-width: 640px) {
-          .auth-container {
-            grid-template-columns: 1fr;
-            max-width: 420px;
-            min-height: unset;
-          }
+        @media (max-width: 768px) {
+  .auth-container { grid-template-columns: 1fr; max-width: 420px; min-height: unset; }
+  .welcome-panel { padding: 2rem 1.5rem 1.5rem; min-height: 160px; }
+  .welcome-panel h1 { font-size: 1.4rem; }
+  .welcome-panel p { display: none; }
+  .form-panel { padding: 2rem 1.5rem; order: 2; }
+  /* Ajout pour être sûr que les champs Nom/Prénom passent l'un sous l'autre */
+  .row-2 { grid-template-columns: 1fr; gap: 0; } 
+}
 
           .welcome-panel {
             padding: 2rem 1.5rem 1.5rem;
