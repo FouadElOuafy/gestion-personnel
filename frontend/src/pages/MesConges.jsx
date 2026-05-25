@@ -130,15 +130,15 @@ export default function MesConges() {
       {succes && <div className="alert alert-success py-2 mb-3">{succes}</div>}
       {erreur && !showModal && <div className="alert alert-danger py-2 mb-3">{erreur}</div>}
 
-      {/* STAT CARDS */}
+      {/* STAT CARDS RESPONSIVE */}
       <div className="row g-3 mb-4">
         {[
-          { label: 'Total',       val: stats.total,     icon: '📋', color: '#378ADD' },
+          { label: 'Total',       val: stats.total,    icon: '📋', color: '#378ADD' },
           { label: 'En attente',  val: stats.enAttente, icon: '⏳', color: '#EF9F27' },
           { label: 'Approuvés',   val: stats.approuves, icon: '✅', color: '#1D9E75' },
           { label: 'Refusés',     val: stats.refuses,   icon: '❌', color: '#E24B4A' },
         ].map((s, i) => (
-          <div key={i} className="col-3">
+          <div key={i} className="col-12 col-sm-6 col-md-3">
             <div className="card border-0 shadow-sm" style={{ borderRadius: 12 }}>
               <div className="card-body p-3 d-flex align-items-center gap-3">
                 <div style={{
@@ -158,7 +158,7 @@ export default function MesConges() {
       </div>
 
       {/* FILTRES */}
-      <div className="d-flex gap-2 mb-3">
+      <div className="d-flex flex-wrap gap-2 mb-3">
         {[
           { key: 'tous',       label: 'Tous'        },
           { key: 'en_attente', label: '⏳ En attente' },

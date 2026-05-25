@@ -94,28 +94,28 @@ export default function Conges() {
           </p>
         </div>
         {(role === 'employe' || role === 'manager') && (
-  <button className="btn btn-primary" onClick={ouvrirModal}>
-    + Nouvelle demande
-  </button>
-)}
+          <button className="btn btn-primary" onClick={ouvrirModal}>
+            + Nouvelle demande
+          </button>
+        )}
       </div>
 
       {/* MESSAGES */}
       {succes && <div className="alert alert-success py-2">{succes}</div>}
       {erreur && !showModal && <div className="alert alert-danger py-2">{erreur}</div>}
 
-      {/* STATS RAPIDES */}
+      {/* STATS RAPIDES RESPONSIVE */}
       <div className="row g-3 mb-4">
         {[
-          { label: 'Total',      val: conges.length,                                    color: '#378ADD', icon: '📋' },
+          { label: 'Total',      val: conges.length,                                         color: '#378ADD', icon: '📋' },
           { label: 'En attente', val: conges.filter(c => c.statut === 'en_attente').length, color: '#EF9F27', icon: '⏳' },
           { label: 'Approuvés',  val: conges.filter(c => c.statut === 'approuve').length,   color: '#1D9E75', icon: '✅' },
           { label: 'Refusés',    val: conges.filter(c => c.statut === 'refuse').length,     color: '#E24B4A', icon: '❌' },
         ].map((s, i) => (
-          <div key={i} className="col-3">
+          <div key={i} className="col-12 col-sm-6 col-md-3">
             <div className="card border-0 shadow-sm" style={{ borderRadius: 12 }}>
               <div className="card-body p-3 d-flex align-items-center gap-3">
-                <span style={{ fontSize: 28 }}>{s.icon}</span>
+                <span style={{ fontSize: 28, flexShrink: 0 }}>{s.icon}</span>
                 <div>
                   <p className="text-muted mb-0" style={{ fontSize: 12 }}>{s.label}</p>
                   <h5 className="fw-bold mb-0" style={{ color: s.color }}>{s.val}</h5>
@@ -127,7 +127,7 @@ export default function Conges() {
       </div>
 
       {/* FILTRES */}
-      <div className="d-flex gap-2 mb-3">
+      <div className="d-flex flex-wrap gap-2 mb-3">
         {[
           { val: 'tous',       label: 'Tous' },
           { val: 'en_attente', label: '⏳ En attente' },
@@ -183,7 +183,7 @@ export default function Conges() {
                               background: `hsl(${i * 60}, 60%, 50%)`,
                               display: 'flex', alignItems: 'center',
                               justifyContent: 'center', color: '#fff',
-                              fontSize: 13, fontWeight: 700
+                              fontSize: 13, fontWeight: 700, flexShrink: 0
                             }}>
                               {c.employe?.nom?.charAt(0).toUpperCase() || '?'}
                             </div>
